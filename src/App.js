@@ -1,7 +1,7 @@
 import './App.css';
-import Home from './screens/Home';
 import Detail from "./screens/Detail"
 import Evalution from './screens/Evalution';
+import Thanks from './screens/Thanks';
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,11 +12,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path = "/students/:id" element = {<Home />}>
+        <Route path = "/students/:id" element = {<Evalution />}>
         </Route>
         <Route path = "/students/:id/detail" element = {<Detail />}>
         </Route>
-        <Route path = "/students/:id/evalution" element = {<Evalution />}>
+        <Route path = "/students/:id/thanks" element = {<Thanks />}>
         </Route>
       </Routes>
     </Router>

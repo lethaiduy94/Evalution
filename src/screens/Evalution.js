@@ -1,16 +1,19 @@
 import React, {useState, useEffect, useMemo} from 'react'
-import { useParams } from 'react-router'
+import { useParams} from 'react-router'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+//url
+import {localhost, heroku} from '../url/sever'
 
 export default function Evalution() {
     const {id} = useParams()
     const [student, setStudent] = useState({})
-    const [visitor, setVisitor] = useState('duy')
-    const [plan, setPlan] = useState(5)
-    const [presentation, setPresentation] = useState(5)
-    const [code, setCode] = useState(5)
-    const [design, setDesign] = useState(5)
-    const [communication, setCommunication] = useState(5)
+    const [visitor, setVisitor] = useState('ディレクター')
+    const [plan, setPlan] = useState(2)
+    const [presentation, setPresentation] = useState(2)
+    const [code, setCode] = useState(2)
+    const [design, setDesign] = useState(2)
+    const [communication, setCommunication] = useState(2)
     const [comment, setComment] = useState('duy')
     const [comment2, setComment2] = useState('duy')
 
@@ -87,13 +90,13 @@ export default function Evalution() {
 
          const addScore = await axios({
              method:'POST',
-             url:"https://quiet-sands-58722.herokuapp.com/evalutions",
+             url:`${heroku}/evalutions`,
              data
          })
 
          const updateScore = await axios({
              method:"PUT",
-             url:`https://quiet-sands-58722.herokuapp.com/students/${id}`,
+             url:`${heroku}/students/${id}`,
              data : {
                 total_scores
              }
@@ -122,7 +125,7 @@ export default function Evalution() {
             }
             const updateScore = await axios({
                 method:"PUT",
-                url:`https://quiet-sands-58722.herokuapp.com/students/${id}`,
+                url:`${heroku}/students/${id}`,
                 data : {
                     total_scores
                 }
@@ -142,7 +145,7 @@ export default function Evalution() {
             try {
                 const studentData = await axios({
                     method:'GET',
-                    url:`https://quiet-sands-58722.herokuapp.com/students/${id}`
+                    url:`${heroku}/students/${id}`
                 })
                 console.log(studentData.data)
                 setStudent(studentData.data)
@@ -160,26 +163,35 @@ export default function Evalution() {
         return (
             <div style={{margin:"15px"}}>
                 <h1>{student.student_number.includes('21aw') ? '一年生':'二年生'}  {student.name}</h1>
-                <form style={{ display:"flex",flexDirection:"column", maxWidth:"300px" }} onSubmit={handleSubmit}>
-                 <label htmlFor="visitor">来場者</label>
-                 <input name="visitor" type="text" onChange={visitorChange} ></input>
+                <form style={{ display:"flex",flexDirection:"column", maxWidth:"300px" }} >
+                 <label htmlFor="visitor">職種を選択してください</label>
+                 <select name = "visitor" onChange = {visitorChange} value = {visitor}>
+                    <option value="ディレクター">ディレクター</option>
+                    <option value="デザイナー">デザイナー</option>
+                    <option value="エンジニア">エンジニア</option>
+                    <option value="プログラマー">プログラマー</option>
+                    <option value="コーダー">コーダー</option>
+                    <option value="営業">営業</option>
+                    <option value="学生">学生</option>
+                    <option value="保護者">保護者</option>
+                </select>
                  <label htmlFor="plan">企画力</label>
-                 <input value={plan} name="plan" type="range" min="0" max="10" step="1" onChange={planChange} ></input>
+                 <input value={plan} name="plan" type="range" min="0" max="5" step="1" onChange={planChange} ></input>
                  <label htmlFor="presentation">伝える力</label>
-                 <input value={presentation} name="presentation" type="range" min="0" max="10" step="1" onChange={preChange}  ></input>
+                 <input value={presentation} name="presentation" type="range" min="0" max="5" step="1" onChange={preChange}  ></input>
                  <label htmlFor="code">実装力</label>
-                 <input value={code} name="code" type="range" min="0" max="10" step="1" onChange={codeChange} ></input>
+                 <input value={code} name="code" type="range" min="0" max="5" step="1" onChange={codeChange} ></input>
                  <label htmlFor="design">UI・デザイン力</label>
-                 <input value={design} name="design" type="range" min="0" max="10" step="1" onChange={designChange} ></input>
+                 <input value={design} name="design" type="range" min="0" max="5" step="1" onChange={designChange} ></input>
                  <label htmlFor="communication">ビジネスマナー</label>
-                 <input value={communication} name="communication" type="range" min="0" max="10" step="1" onChange={communicationChange} ></input>
+                 <input value={communication} name="communication" type="range" min="0" max="5" step="1" onChange={communicationChange} ></input>
                  <label htmlFor="comment">良かった点</label>
                  <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={comChange}></textarea>
                  <label htmlFor="comment">あともう一歩な点</label>
                  <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={com2Change}></textarea>
-                 <button>{student.name}君へ</button>
+                 <button onClick = {handleSubmit}><Link to = {`/students/${id}/thanks`}>{student.name}さんへ送る</Link></button>
              </form>
-             <button onClick={testUpdate}>Update</button>
+             {/* <button onClick={testUpdate}>Update</button> */}
             </div>
         )
     }
