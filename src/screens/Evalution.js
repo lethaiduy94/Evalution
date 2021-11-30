@@ -166,9 +166,9 @@ export default function Evalution() {
         return (
             <div style={{padding:'15px', margin:'auto', maxWidth:400}}>
                 <div className ={styles.header}>
-                    <div className = {styles.imgBox}>
+                    {/* <div className = {styles.imgBox}>
                         <img className = {styles.img} src = {`${heroku}${student.avatar.url}`}></img>
-                    </div>
+                    </div> */}
                     <div　className ={styles.content}>
                         <h2>{student.name}</h2>  
                         <div className= {styles.contentSub}>

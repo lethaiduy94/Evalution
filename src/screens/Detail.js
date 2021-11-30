@@ -26,11 +26,15 @@ export default function Detail() {
                     url:`${heroku}/students/${id}`
                 })
                 const evalutionsSort = studentData.data.evalutions.sort(compare)
-                setHana(studentData.data.ill_img.url)
-                setAvatar(studentData.data.avatar.url)
+
+                
+                // setHana(studentData.data.ill_img.url)
+                // setAvatar(studentData.data.avatar.url)
                 setStudent(studentData.data)
                 setEvalutions(evalutionsSort)
                 setTimes(studentData.data.evalutions.length)
+
+                console.log(studentData.data)
 
                 const codeAverage = (studentData.data.total_scores.code / studentData.data.evalutions.length);
                 const planAverage = (studentData.data.total_scores.plan / studentData.data.evalutions.length);
@@ -77,9 +81,9 @@ const dateFomat = (value) =>{
                 <div style={{display:'flex', justifyContent:'space-between'}}>
                 <h1>{student.name}</h1>
                     
-                    <div style={{width:100,height:100,borderRadius:'50%',overflow:'hidden'}}>
+                    {/* <div style={{width:100,height:100,borderRadius:'50%',overflow:'hidden'}}>
                         <Link to ={`/students/${id}/detail/flower`}><img style={{width:'100%',height:'100%',objectFit:'cover'}} src={`${heroku}${hana}`} alt="hana" ></img></Link>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div className = {styles.section1}>
@@ -93,7 +97,7 @@ const dateFomat = (value) =>{
                         <p>評価をいただいた回数：<span>{times}</span> 回</p>
                     </div>
                 
-                    {
+                    {evalutions &&
                         evalutions.map((item, index) =>{
                             return(
                                 <div className = {styles.evalution}  key = {index}>
