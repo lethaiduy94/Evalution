@@ -1,15 +1,22 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import {compare} from '../method/filter'
 //url
 import {localhost, heroku} from '../url/sever'
+//component
+import Chart from '../components/detail/Chart'
+//css
+import styles from './detail.module.css'
 export default function Detail() {
     const {id} = useParams()
     const [student, setStudent] = useState({})
     const [evalutions, setEvalutions] = useState([])
     const [times, setTimes] = useState(0)
-
+    const [avatar, setAvatar] = useState('')
+    const [hana, setHana] =useState('')
+    const [average, setAverage] = useState([])
     useEffect (() =>{
         const fetchData = async () =>{
 
@@ -19,9 +26,27 @@ export default function Detail() {
                     url:`${heroku}/students/${id}`
                 })
                 const evalutionsSort = studentData.data.evalutions.sort(compare)
+                setHana(studentData.data.ill_img.url)
+                setAvatar(studentData.data.avatar.url)
                 setStudent(studentData.data)
                 setEvalutions(evalutionsSort)
                 setTimes(studentData.data.evalutions.length)
+
+                const codeAverage = (studentData.data.total_scores.code / studentData.data.evalutions.length);
+                const planAverage = (studentData.data.total_scores.plan / studentData.data.evalutions.length);
+                const designAverage = (studentData.data.total_scores.design / studentData.data.evalutions.length);
+                const presentationAverage = (studentData.data.total_scores.presentation / studentData.data.evalutions.length);
+                const communicationAverage = (studentData.data.total_scores.communication / studentData.data.evalutions.length);
+                
+                const average = [
+                    Math.floor(codeAverage) ,
+                    Math.floor(planAverage) ,
+                    Math.floor(designAverage) ,
+                    Math.floor(presentationAverage) ,
+                    Math.floor(communicationAverage) ,
+                ]
+
+                setAverage(average)
             } catch (error) {
                 console.log(error)
             }
@@ -29,41 +54,63 @@ export default function Detail() {
 
         fetchData()
     },[])
+
+// date format
+const dateFomat = (value) =>{
+    const dateString =  new Date(value);
+    const month = dateString.getMonth();
+    const date = dateString.getDate();
+    const hours = dateString.getHours();
+    const minutes = dateString.getMinutes();
+
+    const format = `${month}月${date}日 ${hours}時${minutes}分`
+    return format;
+}
+
+
+
     if(Object.keys(student).length === 0 && student.constructor === Object){
         return(<></>)
     }else{
         return (
-            <div style ={{padding:"15px"}}>
-                <h1>{student.student_number.includes('21aw') ? '一年生':'二年生'}  {student.name}</h1>
-                <h2>評価点</h2>
-                <ul>
-                    <li>総合点:{student.total_scores.total_score}</li>
-                    <li>企画力: {student.total_scores.plan}</li>
-                    <li>伝える力: {student.total_scores.presentation}</li>
-                    <li>UI・デザイン力: {student.total_scores.design}</li>
-                    <li>実装力: {student.total_scores.code}</li>
-                    <li>ビジネスマナー: {student.total_scores.communication}</li>
-                </ul>
+            <div style ={{padding:"15px", margin:'auto', overflow:'hidden'}}>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
+                <h1>{student.name}</h1>
+                    
+                    <div style={{width:100,height:100,borderRadius:'50%',overflow:'hidden'}}>
+                        <Link to ={`/students/${id}/detail/flower`}><img style={{width:'100%',height:'100%',objectFit:'cover'}} src={`${heroku}${hana}`} alt="hana" ></img></Link>
+                    </div>
+
+                </div>
+                <div className = {styles.section1}>
+                    <h2>平均スコア</h2>
+                    <div className= {styles.arrow}></div>
+                </div>
+
+                <Chart average={average} times={times} />
                 <div>
-                    <h2>コメント</h2>
-                    <p>{times}回プレゼンテーションしました。</p>
+                    <div className = {styles.value}>
+                        <p>評価をいただいた回数：<span>{times}</span> 回</p>
+                    </div>
                 
                     {
                         evalutions.map((item, index) =>{
                             return(
-                                <div key = {index}>
-                                    <h3>{item.visitor}さん</h3>
+                                <div className = {styles.evalution}  key = {index}>
+                                    <h3>{item.visitor} <span className = {styles.subTitle}>さんからいただいた評価</span></h3>
+                                    <i>{dateFomat(item.published_at)}</i>
                                     <h4>良かった点</h4>
                                     <p>{item.comment}</p>
                                     <h4>あともう一歩な点</h4>
                                     <p>{item.comment_2}</p>
                                     <h4>もらった評価点</h4>
-                                    <ul>
+                                    <ul className = {styles.list}>
                                         <li style={{marginRight:"25px"}}>企画力:{item.plan}</li>
                                         <li style={{marginRight:"25px"}}>伝える力:{item.presentation}</li>
                                         <li style={{marginRight:"25px"}}>UI・デザイン力:{item.design}</li>
                                         <li style={{marginRight:"25px"}}>実装力:{item.code}</li>
                                         <li style={{marginRight:"25px"}}>ビジネスマナー:{item.communication}</li>
+                                        
                                     </ul>
                                 </div>
                             )

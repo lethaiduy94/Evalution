@@ -4,11 +4,14 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 //url
 import {localhost, heroku} from '../url/sever'
-
+//css
+import styles from './evalution.module.css'
+//img
+import img from '../image/present_icon.png'
 export default function Evalution() {
     const {id} = useParams()
     const [student, setStudent] = useState({})
-    const [visitor, setVisitor] = useState('ディレクター')
+    const [visitor, setVisitor] = useState('デザイナー')
     const [plan, setPlan] = useState(2)
     const [presentation, setPresentation] = useState(2)
     const [code, setCode] = useState(2)
@@ -161,35 +164,85 @@ export default function Evalution() {
         return(<></>)
     }else{
         return (
-            <div style={{margin:"15px"}}>
-                <h1>{student.student_number.includes('21aw') ? '一年生':'二年生'}  {student.name}</h1>
-                <form style={{ display:"flex",flexDirection:"column", maxWidth:"300px" }} >
-                 <label htmlFor="visitor">職種を選択してください</label>
-                 <select name = "visitor" onChange = {visitorChange} value = {visitor}>
-                    <option value="ディレクター">ディレクター</option>
-                    <option value="デザイナー">デザイナー</option>
-                    <option value="エンジニア">エンジニア</option>
-                    <option value="プログラマー">プログラマー</option>
-                    <option value="コーダー">コーダー</option>
-                    <option value="営業">営業</option>
-                    <option value="学生">学生</option>
-                    <option value="保護者">保護者</option>
-                </select>
-                 <label htmlFor="plan">企画力</label>
-                 <input value={plan} name="plan" type="range" min="0" max="5" step="1" onChange={planChange} ></input>
-                 <label htmlFor="presentation">伝える力</label>
-                 <input value={presentation} name="presentation" type="range" min="0" max="5" step="1" onChange={preChange}  ></input>
-                 <label htmlFor="code">実装力</label>
-                 <input value={code} name="code" type="range" min="0" max="5" step="1" onChange={codeChange} ></input>
-                 <label htmlFor="design">UI・デザイン力</label>
-                 <input value={design} name="design" type="range" min="0" max="5" step="1" onChange={designChange} ></input>
-                 <label htmlFor="communication">ビジネスマナー</label>
-                 <input value={communication} name="communication" type="range" min="0" max="5" step="1" onChange={communicationChange} ></input>
-                 <label htmlFor="comment">良かった点</label>
-                 <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={comChange}></textarea>
-                 <label htmlFor="comment">あともう一歩な点</label>
-                 <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={com2Change}></textarea>
-                 <button onClick = {handleSubmit}><Link to = {`/students/${id}/thanks`}>{student.name}さんへ送る</Link></button>
+            <div style={{padding:'15px', margin:'auto', maxWidth:400}}>
+                <div className ={styles.header}>
+                    <div className = {styles.imgBox}>
+                        <img className = {styles.img} src = {`${heroku}${student.avatar.url}`}></img>
+                    </div>
+                    <div　className ={styles.content}>
+                        <h2>{student.name}</h2>  
+                        <div className= {styles.contentSub}>
+                            <p>職種：{student.job}</p>
+                            <p>強み：{student.talent}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <form>
+                <div className ={styles.visitor}>
+                    <label htmlFor="visitor">職種を選択してください</label>
+                    <select name = "visitor" onChange = {visitorChange} value = {visitor}>
+                        <option value="デザイナー">デザイナー</option>
+                        <option value="エンジニア">エンジニア</option>
+                        <option value="プログラマー">プログラマー</option>
+                        <option value="コーダー">コーダー</option>
+                        <option value="ディレクター">ディレクター</option>
+                        <option value="営業">営業</option>
+                        <option value="学生">学生</option>
+                        <option value="保護者">保護者</option>
+                    </select>
+                </div>
+                <div className ={styles.plan}>
+                    <label htmlFor="plan">企画力</label>
+                    <div className= {styles.evalution}>
+                        <p>1</p>
+                        <input value={plan} name="plan" type="range" min="0" max="5" step="1" onChange={planChange} ></input>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div className ={styles.presentation}>
+                    <label htmlFor="presentation">伝える力</label>
+                    <div className= {styles.evalution}>
+                        <p>1</p>
+                        <input value={presentation} name="presentation" type="range" min="0" max="5" step="1" onChange={preChange}  ></input>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div className ={styles.code}>
+                    <label htmlFor="code">実装力</label>
+                    <div className= {styles.evalution}>
+                        <p>1</p>
+                         <input value={code} name="code" type="range" min="0" max="5" step="1" onChange={codeChange} ></input>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div className ={styles.design}>
+                    <label htmlFor="design">UI・デザイン力</label>
+                    <div className= {styles.evalution}>
+                        <p>1</p>
+                        <input value={design} name="design" type="range" min="0" max="5" step="1" onChange={designChange} ></input>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div className ={styles.communication}>
+                    <label htmlFor="communication">ビジネスマナー</label>
+                    <div className= {styles.evalution}>
+                        <p>1</p>
+                        <input value={communication} name="communication" type="range" min="0" max="5" step="1" onChange={communicationChange} ></input>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div className ={styles.comment}>
+                    <label htmlFor="comment">良かった点</label>
+                    <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={comChange}></textarea>
+                    <label htmlFor="comment">あともう一歩な点</label>
+                    <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={com2Change}></textarea>
+                </div>
+                 <button className={styles.btn} onClick = {handleSubmit}>
+                    <div className ={styles.imgBox2}><img className={styles.img} src = {img}></img></div>
+                    <Link style={{textDecoration:'none'}} to = {`/students/${id}/thanks`}>{student.name}さんへ送る</Link>
+                 </button>
              </form>
              {/* <button onClick={testUpdate}>Update</button> */}
             </div>

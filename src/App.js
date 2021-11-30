@@ -2,6 +2,7 @@ import './App.css';
 import Detail from "./screens/Detail"
 import Evalution from './screens/Evalution';
 import Thanks from './screens/Thanks';
+import Flower from './screens/Flower';
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,6 +18,8 @@ function App() {
         <Route path = "/students/:id/detail" element = {<Detail />}>
         </Route>
         <Route path = "/students/:id/thanks" element = {<Thanks />}>
+        </Route>
+        <Route path = "/students/:id/detail/flower" element = {<Flower />}>
         </Route>
       </Routes>
     </Router>

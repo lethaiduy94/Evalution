@@ -1,0 +1,41 @@
+.section1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow{
+    width: 50%;
+    height: 2px;
+    background-color: #000;
+}
+.value{
+    width: 110%;
+    height: 150px;
+    border: 1px solid #000;
+    border-left: none;
+    border-right: none;
+    margin: 0 -15px;
+    display: flex;
+    align-items: center;
+    
+}
+.value p {
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.value p span {
+    font-size: 34px;
+}
+.evalution{
+    border-top: 1px solid #000;
+}
+.subTitle{
+    font-size: 14px;
+    font-weight: lighter;
+}
+.list{
+    list-style: none;
+    padding: 0;
+}
