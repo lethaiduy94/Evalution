@@ -1,4 +1,5 @@
 import './App.css';
+import List from "./screens/List"
 import Detail from "./screens/Detail"
 import Evalution from './screens/Evalution';
 import Thanks from './screens/Thanks';
@@ -13,6 +14,8 @@ function App() {
   return (
     <Router>
       <Routes>
+      <Route path = "/" element = {<List />}>
+        </Route>
         <Route path = "/students/:id" element = {<Evalution />}>
         </Route>
         <Route path = "/students/:id/detail" element = {<Detail />}>

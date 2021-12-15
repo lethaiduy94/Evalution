@@ -30,7 +30,7 @@ export default function Chart({average, times}) {
         aspectRatio:0.5,
         scales: {
           y: {
-            min: 0,
+            min: 1,
             max: 5,
           }
         },

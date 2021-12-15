@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif,'GenJyuuGothic';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root{
+  --background-color-2: #EDF1F4;
+  --background-color-1: #fcf2f0;
+}
+@font-face {
+  font-family: "GenJyuuGothic";
+  src: local("GenJyuuGothic"),
+   url("./fonts/GenJyuuGothic/GenJyuuGothic-Normal.ttf") format("truetype");
+  font-weight: bold;
+  }
