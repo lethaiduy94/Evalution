@@ -25,18 +25,55 @@
     margin: 0 15px;
     box-shadow: inset -5px -5px 5px rgba(255, 255, 255, 0.5),
                 inset 5px 5px 5px rgba(0, 0, 0, 0.6);
-    animation: animate 6s linear infinite;
+
+    animation-name: animate;
+    animation-duration: 6s;
+    animation-timing-function:linear ;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: animate;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-timing-function:linear ;
+    -webkit-animation-iteration-count: infinite;
+    -o-animation-name: animate;
+    -o-animation-duration: 6s;
+    -o-animation-timing-function:linear ;
+    -o-animation-iteration-count: infinite;
+    -moz-animation-name: animate;
+    -moz-animation-duration: 6s;
+    -moz-animation-timing-function:linear ;
+    -moz-animation-iteration-count: infinite;
+   
 }
 @keyframes animate {
     0%{
+        -webkit-box-shadow :-5px -5px 5px rgba(255, 255, 255, 0.5),
+        5px 5px 5px rgba(0, 0, 0, 0.6);
         box-shadow:  -5px -5px 5px rgba(255, 255, 255, 0.5),
-                 5px 5px 5px rgba(0, 0, 0, 0.6);
+                      5px 5px 5px rgba(0, 0, 0, 0.6);
     }
     100%{
+        -webkit-box-shadow:inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+        inset 5px 5px 5px rgba(0, 0, 0, 0.6);
         box-shadow: inset -5px -5px 5px rgba(255, 255, 255, 0.5),
                     inset 5px 5px 5px rgba(0, 0, 0, 0.6);
     }
 }
+@-webkit-keyframes animate {
+    0%{
+        
+        box-shadow:  -5px -5px 5px rgba(255, 255, 255, 0.5),
+                      5px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+    100%{
+        -webkit-box-shadow:inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+        inset 5px 5px 5px rgba(0, 0, 0, 0.6);
+        
+    }
+}
+
+/* renamed keyframes */
+
+
 .loader span:nth-child(1){
     animation-delay: 0.5s;
     height: 40px;

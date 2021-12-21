@@ -31,7 +31,9 @@ export default function Student(props) {
                                     }} className={styles.number}>{student.id}</div>
                                     </div>
                                 </div>
-                                <p className={styles.name} style={{fontSize: student.name.length > 9 ? '15px' : '18px'}}>{student.name}</p>
+                                <p className={styles.name} style={{fontSize: student.name.length > 9 ? '15px' : '18px',
+                                                                    color : grade == '21aw' ? '#E8644F' : '#1163A1'
+                                }}>{student.name}</p>
         </Link>
         </>
     )

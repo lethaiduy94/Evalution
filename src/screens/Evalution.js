@@ -221,7 +221,7 @@ export default function Evalution() {
                     </div>
                     <p className={styles.number}>ブース番号: <span>{student.id}</span></p>
                     <div className={styles.product}>
-                        <p>高級ギフトECサイト「ギフトリエ」のスペシャルサイト</p>
+                        <p>{student.title}</p>
                         <div className={styles.productImg}>
                             <img src={student.production_img != null ?`${heroku}${student.production_img.url}`:dummy}></img>
                         </div>
