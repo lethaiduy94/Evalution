@@ -81,7 +81,7 @@ export default function List() {
                             )
                         })}
                     </div>
-                    <p style={{margin: "35px auto",color:'#000'}}>ブース番号を選んで評価をお願いします</p>
+                    <p style={{margin: "35px auto",color:'#6A5026'}}>ブース番号を選んで評価をお願いします</p>
                     <ul className={styles.list}>
                         {students.map((student, index) =>{
                             return (

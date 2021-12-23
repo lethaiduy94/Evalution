@@ -260,7 +260,7 @@ export default function Evalution() {
                         <label htmlFor="plan">企画力</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
-                            <input value={plan} name="plan" type="range" min="1" max="5" step="1" ref={planBarRef} onChange={planChange} ></input>
+                            <input value={plan} name="plan" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={planBarRef} onChange={planChange} ></input>
                             <div ref={planRef} className = {styles.value}>3</div>
                             <p>5</p>
                         </div>
@@ -269,7 +269,7 @@ export default function Evalution() {
                         <label htmlFor="presentation">伝える力</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
-                            <input value={presentation} name="presentation" type="range" min="1" max="5" step="1" ref={presentationBarRef} onChange={preChange}  ></input>
+                            <input value={presentation} name="presentation" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={presentationBarRef} onChange={preChange}  ></input>
                             <div ref={presentationRef} className = {styles.value}>3</div>
                             <p>5</p>
                         </div>
@@ -278,7 +278,7 @@ export default function Evalution() {
                         <label htmlFor="code">実装力</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
-                            <input value={code} name="code" type="range" min="1" max="5" step="1" ref={codeBarRef} onChange={codeChange} ></input>
+                            <input value={code} name="code" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={codeBarRef} onChange={codeChange} ></input>
                             <div ref={codeRef} className = {styles.value}>3</div>
                             <p>5</p>
                         </div>
@@ -287,7 +287,7 @@ export default function Evalution() {
                         <label htmlFor="design">UI・デザイン力</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
-                            <input value={design} name="design" type="range" min="1" max="5" step="1" ref={designBarRef} onChange={designChange} ></input>
+                            <input value={design} name="design" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={designBarRef} onChange={designChange} ></input>
                             <div ref={designRef} className = {styles.value}>3</div>
                             <p>5</p>
                         </div>
@@ -296,7 +296,7 @@ export default function Evalution() {
                         <label htmlFor="communication">ビジネスマナー</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
-                            <input value={communication} name="communication" type="range" min="1" max="5" step="1" ref={communicationBarRef} onChange={communicationChange} ></input>
+                            <input value={communication} name="communication" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={communicationBarRef} onChange={communicationChange} ></input>
                             <div ref={communicationRef} className = {styles.value}>3</div>
                             <p>5</p>
                         </div>
