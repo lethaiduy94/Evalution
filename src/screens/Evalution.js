@@ -10,13 +10,11 @@ import styles from './evalution.module.css'
 import img from '../image/present_icon.png'
 import dummy from '../image/placeholder-image.png'
 import avatarDummy from '../asset/avatar/dummy.jpg'
+import downArrow from '../image/caret-down-outline.svg'
 export default function Evalution() {
     const {id} = useParams()
     const [student, setStudent] = useState({})
 
-
-    
-    
 
     const [visitor, setVisitor] = useState('デザイナー')
     const [plan, setPlan] = useState(3)
@@ -108,7 +106,6 @@ export default function Evalution() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-
         const data = {
             code:parseInt(code),
             plan:parseInt(plan),
@@ -120,7 +117,7 @@ export default function Evalution() {
             comment_2:comment2,
             student:id
         }
-        
+        const totalAsc = parseInt(design) + parseInt(code) + parseInt( plan) +parseInt(presentation) +parseInt(communication) + parseInt(total)
         const total_scores = {
            
                 id,
@@ -144,6 +141,7 @@ export default function Evalution() {
              method:"PUT",
              url:`${heroku}/students/${id}`,
              data : {
+                total: totalAsc,
                 total_scores
              }
          })
@@ -214,38 +212,52 @@ export default function Evalution() {
                 <div className ={student.student_number.includes('20aw') ?  styles.header :  styles.header2}>
                     <p className={styles.title}>「{student.name}」さんの作品評価をお願いします</p>
                     <div className = {styles.imgBox} style={{
-                        boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px rgba(0, 0, 0, 0.3), -3px -3px 2px #67bfff` :
-                        `3px 3px 4px rgba(0, 0, 0, 0.3), -3px -3px 2px #EB9386`
+                        boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px var(--bottom-shadow-1), -3px -3px 2px var(--top-shadow-1)` :
+                        `3px 3px 4px var(--bottom-shadow-2), -3px -3px 2px var(--top-shadow-2)`
                     }}>
                         <img className = {styles.img} src = {student.avatar != null ? `${student.avatar.url}`:avatarDummy}></img>
                     </div>
                     <p className={styles.number}>ブース番号: <span>{student.id}</span></p>
                     <div className={styles.product}>
                         <p>{student.title}</p>
-                        <div className={styles.productImg}>
+                        <div className={styles.productImg} style={{
+                            boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px var(--bottom-shadow-1), -3px -3px 2px var(--top-shadow-1)` :
+                        `3px 3px 4px var(--bottom-shadow-2), -3px -3px 2px var(--top-shadow-2)`
+                        }}>
                             <img src={student.production_img != null ?`${heroku}${student.production_img.url}`:dummy}></img>
                         </div>
                     </div>
                     <div className={styles.headerBtm}>
-                        <p>作品の評価をお願いします</p>
+                        <p style={{fontSize: "18px"}}>作品の評価をお願いします</p>
                         <p className={styles.bar}>SCROLL</p>
+                        <ion-icon style={{ color: "#ffff",
+                                           fontSize:"34px",
+
+
+                        }} name="caret-down-outline"></ion-icon>
                     </div>
                     
                 </div>
                 <div className={styles.formContainer} style={{
-                    background: student.student_number.includes('20aw') ? `linear-gradient(0deg, rgba(179,214,240,1) 0%, rgba(14,78,126,1) 100%)` : 
-                    `linear-gradient(0deg, #F4A477 0%, #EF8850 100%)`
+                    background: student.student_number.includes('20aw') ? `#EDF1F4` : 
+                    `#FFF8F7`
                 }}>
-                    <p className={styles.formTitle}>5つの評価をお願いします</p>
+                    <p className={styles.formTitle}>作品についてお聞かせください</p>
                     <form className={styles.form}>
                     <div className ={styles.visitor}>
-                        <label htmlFor="visitor">職種を選択してください</label>
+                        <label style={{fontSize: "14px"}} htmlFor="visitor">あなたの職種を選択してください</label>
                         <select style={{
                             background : student.student_number.includes('20aw') ? `#D5E2EB` : `#FCEEEC`,
                             boxShadow : student.student_number.includes('20aw') ? 
-                            `3px 3px 4px rgb(0 0 0 / 30%), -3px -3px 2px #0e4e7e`:
-                            `3px 3px 4px rgb(0 0 0 / 30%), -3px -3px 2px #ec9160`
+                            `3px 3px 4px #A0B7C9, -3px -3px 2px #FAFDFF`:
+                            `3px 3px 4px #CC928A, -3px -3px 2px #FCEEEC`,
+                            backgroundImage : `url(${downArrow})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "right 0.25rem center",
+                            backgroundSize: "24px"
+
                         }} name = "visitor" onChange = {visitorChange} value = {visitor}>
+                             
                             <option value="デザイナー">デザイナー</option>
                             <option value="エンジニア">エンジニア</option>
                             <option value="プログラマー">プログラマー</option>
@@ -254,6 +266,7 @@ export default function Evalution() {
                             <option value="営業">営業</option>
                             <option value="学生">学生</option>
                             <option value="保護者">保護者</option>
+                            <option value="その他">その他</option>
                         </select>
                     </div>
                     <div className ={styles.plan}>
@@ -262,6 +275,11 @@ export default function Evalution() {
                             <p>1</p>
                             <input value={plan} name="plan" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={planBarRef} onChange={planChange} ></input>
                             <div ref={planRef} className = {styles.value}>3</div>
+                            <div className={styles.datalist}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>5</p>
                         </div>
                     </div>
@@ -271,6 +289,11 @@ export default function Evalution() {
                             <p>1</p>
                             <input value={presentation} name="presentation" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={presentationBarRef} onChange={preChange}  ></input>
                             <div ref={presentationRef} className = {styles.value}>3</div>
+                            <div className={styles.datalist}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>5</p>
                         </div>
                     </div>
@@ -280,6 +303,11 @@ export default function Evalution() {
                             <p>1</p>
                             <input value={code} name="code" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={codeBarRef} onChange={codeChange} ></input>
                             <div ref={codeRef} className = {styles.value}>3</div>
+                            <div className={styles.datalist}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>5</p>
                         </div>
                     </div>
@@ -289,6 +317,11 @@ export default function Evalution() {
                             <p>1</p>
                             <input value={design} name="design" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={designBarRef} onChange={designChange} ></input>
                             <div ref={designRef} className = {styles.value}>3</div>
+                            <div className={styles.datalist}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>5</p>
                         </div>
                     </div>
@@ -298,15 +331,20 @@ export default function Evalution() {
                             <p>1</p>
                             <input value={communication} name="communication" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={communicationBarRef} onChange={communicationChange} ></input>
                             <div ref={communicationRef} className = {styles.value}>3</div>
+                            <div className={styles.datalist}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>5</p>
                         </div>
                     </div>
                     <div className ={styles.comment}>
                         <p>あなたのコメントが学生の励みになります</p>
                         <label htmlFor="comment">良かった点</label>
-                        <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={comChange} placeholder='（例）目線を合わせてプレゼンしてくれたのが好印象でした'></textarea>
+                        <textarea name="comment" rows="6" cols="50" maxLength="200" onChange={comChange} placeholder='（例）目線を合わせてプレゼンしてくれたのが好印象でした'></textarea>
                         <label htmlFor="comment">あともう一歩な点</label>
-                        <textarea name="comment" rows="4" cols="50" maxLength="200" onChange={com2Change} placeholder='（例）名刺を渡す動作をもう一度確認してみてください'></textarea>
+                        <textarea name="comment" rows="6" cols="50" maxLength="200" onChange={com2Change} placeholder='（例）名刺を渡す動作をもう一度確認してみてください'></textarea>
                     </div>
                         <div className={styles.bottom} onClick={handleSubmit}>
                             
@@ -314,8 +352,8 @@ export default function Evalution() {
                                 <Link style={{
                                     background :student.student_number.includes('20aw') ?  `#D4E2EB`:`#FCEEEC`,
                                     boxShadow : student.student_number.includes('20aw') ? 
-                                    `3px 3px 4px rgb(0 0 0 / 30%), -3px -3px 4px #88cdff` : 
-                                    `3px 3px 4px rgb(0 0 0 / 30%), -3px -3px 4px #ff9393`
+                                    `3px 3px 4px #A0B7C9, -3px -3px 4px #FAFDFF` : 
+                                    `3px 3px 4px #CC928A, -3px -3px 4px #FCEEEC`
                                 }} className= { styles.link}  to = {`/students/${id}/thanks`}>学生へ送る</Link>
                             
                         </div>

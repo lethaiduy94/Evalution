@@ -36,6 +36,7 @@ export default function Thanks() {
                         <div className= {styles.logoBox}>
                             <img src={logo} className={styles.logo}></img>
                         </div>
+                        <p>学生の花が成長しました！</p>
                     </div>
                     <div className={styles.bottom}>
                         <Link className= { styles.btn}  to = {"/"}><button style={{
