@@ -224,7 +224,7 @@ export default function Evalution() {
                             boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px var(--bottom-shadow-1), -3px -3px 2px var(--top-shadow-1)` :
                         `3px 3px 4px var(--bottom-shadow-2), -3px -3px 2px var(--top-shadow-2)`
                         }}>
-                            <img src={student.production_img != null ?`${heroku}${student.production_img.url}`:dummy}></img>
+                            <img src={student.production_img != null ?`${student.production_img.url}`:dummy}></img>
                         </div>
                     </div>
                     <div className={styles.headerBtm}>
