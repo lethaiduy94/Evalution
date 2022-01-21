@@ -11,8 +11,8 @@ export function compare(a, b) {
     return comparison;
   }
   export function compare2(a, b) {
-    const bandA = a.id;
-    const bandB = b.id;
+    const bandA = a.booth_number;
+    const bandB = b.booth_number;
     
     let comparison = 0;
     if (bandA < bandB) {

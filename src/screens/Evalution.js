@@ -217,7 +217,7 @@ export default function Evalution() {
                     }}>
                         <img className = {styles.img} src = {student.avatar != null ? `${student.avatar.url}`:avatarDummy}></img>
                     </div>
-                    <p className={styles.number}>ブース番号: <span>{student.id}</span></p>
+                    <p className={styles.number}>ブース番号: <span>{student.booth_number}</span></p>
                     <div className={styles.product}>
                         <p>{student.title}</p>
                         <div className={styles.productImg} style={{
