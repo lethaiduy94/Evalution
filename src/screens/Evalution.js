@@ -254,7 +254,8 @@ export default function Evalution() {
                             backgroundImage : `url(${downArrow})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "right 0.25rem center",
-                            backgroundSize: "24px"
+                            backgroundSize: "24px",
+                            color:'#6a5026',
 
                         }} name = "visitor" onChange = {visitorChange} value = {visitor}>
                              
@@ -284,7 +285,7 @@ export default function Evalution() {
                         </div>
                     </div>
                     <div className ={styles.presentation}>
-                        <label htmlFor="presentation">伝える力</label>
+                        <label htmlFor="presentation">プレゼンテーション力</label>
                         <div className= {styles.evalution}>
                             <p>1</p>
                             <input value={presentation} name="presentation" className={student.student_number.includes('20aw') ? styles.inputRange : styles.inputRange2} type="range" min="1" max="5" step="1" ref={presentationBarRef} onChange={preChange}  ></input>
@@ -342,9 +343,9 @@ export default function Evalution() {
                     <div className ={styles.comment}>
                         <p>あなたのコメントが学生の励みになります</p>
                         <label htmlFor="comment">良かった点</label>
-                        <textarea name="comment" rows="6" cols="50" maxLength="200" onChange={comChange} placeholder='（例）目線を合わせてプレゼンしてくれたのが好印象でした'></textarea>
+                        <textarea name="comment" rows="6" cols="50" maxLength="250" onChange={comChange} placeholder='（例）目線を合わせてプレゼンしてくれたのが好印象でした'></textarea>
                         <label htmlFor="comment">あともう一歩な点</label>
-                        <textarea name="comment" rows="6" cols="50" maxLength="200" onChange={com2Change} placeholder='（例）名刺を渡す動作をもう一度確認してみてください'></textarea>
+                        <textarea name="comment" rows="6" cols="50" maxLength="250" onChange={com2Change} placeholder='（例）名刺を渡す動作をもう一度確認してみてください'></textarea>
                     </div>
                         <div className={styles.bottom} onClick={handleSubmit}>
                             

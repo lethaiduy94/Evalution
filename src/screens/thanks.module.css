@@ -9,6 +9,7 @@
     min-height: 100vh;
     font-size: 18px;
     font-family: 'GenJyuuGothic';
+    color: #6a5026;
 }
 .contents{
     margin: auto;
@@ -20,7 +21,7 @@
 }
 .topText p{
     margin: 0;
-    color: #000;
+    color: #6a5026;
 }
 .logoBox{
     margin-top: 55px;
@@ -45,6 +46,7 @@
     border-radius: 16px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3), -3px -3px 4px #ffffff;
     font-family: 'GenJyuuGothic';
+    color: #6a5026;
 }
 /* .btn button:hover{
     box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.3), inset -3px -3px 4px #ffffff;
