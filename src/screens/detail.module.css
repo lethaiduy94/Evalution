@@ -30,12 +30,17 @@
 }
 .evalution{
     border-top: 1px solid #000;
+    padding: 0 15px;
 }
 .subTitle{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: lighter;
 }
 .list{
     list-style: none;
     padding: 0;
+}
+h3{
+    font-size: 24px;
+    font-weight: bold;
 }

@@ -58,6 +58,20 @@
   height: 100%;
   object-fit: cover;
 }
+.number{
+  display: block;
+  align-content: center;
+}
+.number span{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #ffff;
+  border-radius: 50%;
+  align-content: center;
+  line-height: 30px;
+  font-weight: 500;
+}
 .product {
   margin: 60px auto;
 }

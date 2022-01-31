@@ -67,7 +67,7 @@ const dateFomat = (value) =>{
     const hours = dateString.getHours();
     const minutes = dateString.getMinutes();
 
-    const format = `${month}月${date}日 ${hours}時${minutes}分`
+    const format = `${month + 1}月${date}日 ${hours}時${minutes}分`
     return format;
 }
 
@@ -77,8 +77,8 @@ const dateFomat = (value) =>{
         return(<></>)
     }else{
         return (
-            <div style ={{padding:"15px", margin:'auto', overflow:'hidden'}}>
-                <div style={{display:'flex', justifyContent:'space-between'}}>
+            <div style ={{padding:"15px", margin:'auto', overflow:'hidden', backgroundColor: student.student_number.includes('20aw') ? '#EDF1F4' : '#FFF8F7'}}>
+                <div style={{display:'flex', justifyContent:'space-between', padding: '0 15px'}}>
                 <h1>{student.name}</h1>
                     
                     {/* <div style={{width:100,height:100,borderRadius:'50%',overflow:'hidden'}}>
@@ -86,7 +86,7 @@ const dateFomat = (value) =>{
                     </div> */}
 
                 </div>
-                <div className = {styles.section1}>
+                <div style={{padding: '0 15px'}} className = {styles.section1}>
                     <h2>平均スコア</h2>
                     <div className= {styles.arrow}></div>
                 </div>
@@ -103,11 +103,6 @@ const dateFomat = (value) =>{
                                 <div className = {styles.evalution}  key = {index}>
                                     <h3>{item.visitor} <span className = {styles.subTitle}>さんからいただいた評価</span></h3>
                                     <i>{dateFomat(item.published_at)}</i>
-                                    <h4>良かった点</h4>
-                                    <p>{item.comment}</p>
-                                    <h4>あともう一歩な点</h4>
-                                    <p>{item.comment_2}</p>
-                                    <h4>もらった評価点</h4>
                                     <ul className = {styles.list}>
                                         <li style={{marginRight:"25px"}}>企画力:{item.plan}</li>
                                         <li style={{marginRight:"25px"}}>伝える力:{item.presentation}</li>
@@ -116,6 +111,11 @@ const dateFomat = (value) =>{
                                         <li style={{marginRight:"25px"}}>ビジネスマナー:{item.communication}</li>
                                         
                                     </ul>
+                                    <h4>良かった点</h4>
+                                    <p>{item.comment}</p>
+                                    <h4>あともう一歩な点</h4>
+                                    <p>{item.comment_2}</p>
+                                    <h4>もらった評価点</h4>
                                 </div>
                             )
                         })

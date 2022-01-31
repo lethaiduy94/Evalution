@@ -23,7 +23,7 @@ import {
   );
 
 export default function Chart({average, times}) {
-    const labels = ['実装力','企画力','UIデザイン力','プレゼンテーション力','ビジネスマナー'];
+    const labels = ['実装','企画','デザイン','プレゼン','マナー'];
     const options = {
         responsive: true,
         maintainAspectRatio:false,
