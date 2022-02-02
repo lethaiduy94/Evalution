@@ -219,7 +219,7 @@ export default function Evalution() {
                     </div>
                     <p className={styles.number}>ブース番号: <span>{student.booth_number}</span></p>
                     <div className={styles.product}>
-                        <p>{student.title}</p>
+                        <p style={{fontSize: '18px'}}>{student.title}</p>
                         <div className={styles.productImg} style={{
                             boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px var(--bottom-shadow-1), -3px -3px 2px var(--top-shadow-1)` :
                         `3px 3px 4px var(--bottom-shadow-2), -3px -3px 2px var(--top-shadow-2)`
@@ -245,7 +245,7 @@ export default function Evalution() {
                     <p className={styles.formTitle}>作品についてお聞かせください</p>
                     <form className={styles.form}>
                     <div className ={styles.visitor}>
-                        <label style={{fontSize: "14px"}} htmlFor="visitor">あなたの職種を選択してください</label>
+                        <label style={{fontSize: "16px"}} htmlFor="visitor">あなたの職種を選択してください</label>
                         <select style={{
                             background : student.student_number.includes('20aw') ? `#D5E2EB` : `#FCEEEC`,
                             boxShadow : student.student_number.includes('20aw') ? 
