@@ -43,11 +43,11 @@ export default function Detail() {
                 const communicationAverage = (studentData.data.total_scores.communication / studentData.data.evalutions.length);
                 
                 const average = [
-                    Math.floor(codeAverage) ,
-                    Math.floor(planAverage) ,
-                    Math.floor(designAverage) ,
-                    Math.floor(presentationAverage) ,
-                    Math.floor(communicationAverage) ,
+                    Math.round(codeAverage) ,
+                    Math.round(planAverage) ,
+                    Math.round(designAverage) ,
+                    Math.round(presentationAverage) ,
+                    Math.round(communicationAverage) ,
                 ]
 
                 setAverage(average)
@@ -103,6 +103,7 @@ const dateFomat = (value) =>{
                                 <div className = {styles.evalution}  key = {index}>
                                     <h3>{item.visitor} <span className = {styles.subTitle}>さんからいただいた評価</span></h3>
                                     <i>{dateFomat(item.published_at)}</i>
+                                    <h4>もらった評価点</h4>
                                     <ul className = {styles.list}>
                                         <li style={{marginRight:"25px"}}>企画力:{item.plan}</li>
                                         <li style={{marginRight:"25px"}}>伝える力:{item.presentation}</li>
@@ -115,7 +116,6 @@ const dateFomat = (value) =>{
                                     <p>{item.comment}</p>
                                     <h4>あともう一歩な点</h4>
                                     <p>{item.comment_2}</p>
-                                    <h4>もらった評価点</h4>
                                 </div>
                             )
                         })
