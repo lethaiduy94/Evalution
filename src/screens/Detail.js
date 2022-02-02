@@ -77,7 +77,7 @@ const dateFomat = (value) =>{
         return(<></>)
     }else{
         return (
-            <div style ={{padding:"15px", margin:'auto', overflow:'hidden', backgroundColor: student.student_number.includes('20aw') ? '#EDF1F4' : '#FFF8F7'}}>
+            <div className={styles.detailContainer} style ={{ margin:'auto', overflow:'hidden', backgroundColor: student.student_number.includes('20aw') ? '#EDF1F4' : '#FFF8F7'}}>
                 <div style={{display:'flex', justifyContent:'space-between', padding: '0 15px'}}>
                 <h1>{student.name}</h1>
                     
@@ -112,10 +112,14 @@ const dateFomat = (value) =>{
                                         <li style={{marginRight:"25px"}}>ビジネスマナー:{item.communication}</li>
                                         
                                     </ul>
-                                    <h4>良かった点</h4>
-                                    <p>{item.comment}</p>
-                                    <h4>あともう一歩な点</h4>
-                                    <p>{item.comment_2}</p>
+                                    <div className={styles.commentContainer}>
+                                        <h4>良かった点</h4>
+                                        <p className={styles.comment}>{item.comment} </p>
+                                        {/* <p className= {styles.comment}>{item.comment}</p> */}
+                                        <h4>あともう一歩な点</h4>
+                                        <p className={styles.comment}>{item.comment_2} </p>
+                                        {/* <p className= {styles.comment}>{item.comment_2} </p> */}
+                                    </div>
                                 </div>
                             )
                         })
