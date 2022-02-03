@@ -234,8 +234,6 @@ export default function Evalution() {
                         <p className={styles.bar}>SCROLL</p>
                         <ion-icon style={{ color: "#ffff",
                                            fontSize:"34px",
-
-
                         }} name="caret-down-outline"></ion-icon>
                     </div>
                     
