@@ -22,8 +22,8 @@ export default function Evalution() {
     const [code, setCode] = useState(3)
     const [design, setDesign] = useState(3)
     const [communication, setCommunication] = useState(3)
-    const [comment, setComment] = useState('duy')
-    const [comment2, setComment2] = useState('duy')
+    const [comment, setComment] = useState('')
+    const [comment2, setComment2] = useState('')
     //useRef
     const planRef = useRef(null)
     const presentationRef =useRef(null)
