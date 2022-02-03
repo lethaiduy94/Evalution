@@ -1,93 +1,92 @@
-.container{
-    margin: auto;
-    max-width: 700px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    font-family: 'GenJyuuGothic';
+.container {
+  margin: auto;
+  max-width: 700px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  font-family: "GenJyuuGothic";
 }
-.contents{
-    width: 100%;
-    height: 100%;
-    margin:  auto;
-    background-color: var(--background-color-2);
+.contents {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: var(--background-color-2);
 }
 .contents p {
-    text-align: center;
-    margin: 25px auto;
+  text-align: center;
+  margin: 25px auto;
 }
-.nav{
-    display: flex;
-    justify-content: space-between;
-    
+.nav {
+  display: flex;
+  justify-content: space-between;
 }
-.btn{
-    flex-grow: 1;
-    flex-basis: 50%;
-    padding: 15px;
-    border: none;
-    background-color: #ffff;
-    font-weight: 500;
-    font-size: 24px;
-    font-family: 'GenJyuuGothic';
-    color: #6A5026;
-    font-weight: bold;
+.btn {
+  flex-grow: 1;
+  flex-basis: 50%;
+  padding: 15px;
+  border: none;
+  background-color: #ffff;
+  font-weight: 500;
+  font-size: 24px;
+  font-family: "GenJyuuGothic";
+  color: #6a5026;
+  font-weight: bold;
 }
-.btn:nth-child(2){
-    background-color: #edf1f4;
-    color: #1163a1;
+.btn:nth-child(2) {
+  background-color: #edf1f4;
+  color: #1163a1;
 }
 
-.list{
-    padding: 0 25px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.list {
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.list li{
-    list-style: none;
-    flex-basis: 33%;
-    position: relative;
-    align-items: center;
+.list li {
+  list-style: none;
+  flex-basis: 33%;
+  position: relative;
+  align-items: center;
 }
 /* .list li .item{
 } */
 
-.avatarBox{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: transparent;
-    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3), -3px -3px 4px #ffffff;
-    margin: auto;
-    transition: all 0.5s;
+.avatarBox {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3), -3px -3px 4px #ffffff;
+  margin: auto;
+  transition: all 0.5s;
 }
-.avatar{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.5s;
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s;
 }
-.number{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    border-radius: 50%;
-    background-color: #1163A1;
-    color: #ffff;
-    margin: auto;
-    text-align: center;
-    line-height: 30px;
-    top: 55px;
-    left: 10px;
-    box-shadow: 3px 3px 5px #095188, -3px -3px 5px #D7D7DD;
+.number {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #1163a1;
+  color: #ffff;
+  margin: auto;
+  text-align: center;
+  line-height: 30px;
+  top: 55px;
+  left: 10px;
+  box-shadow: 3px 3px 5px #095188, -3px -3px 5px #d7d7dd;
 }
 
-.list p{
-    font-size: 18px;
-    color: #1163A1;
+.list p {
+  font-size: 18px;
+  color: #1163a1;
 }
-.list li .name{
-    margin: 15px auto 30px auto;
+.list li .name {
+  margin: 15px auto 30px auto;
 }
