@@ -17,6 +17,11 @@ export default function Detail() {
     const [avatar, setAvatar] = useState('')
     const [hana, setHana] =useState('')
     const [average, setAverage] = useState([])
+    var codeAverage2 = 0;
+    var planAverage2 = 0;
+    var designAverage2 = 0;
+    var presentationAverage2 = 0;
+    var communicationAverage2 = 0;
     useEffect (() =>{
         const fetchData = async () =>{
 
@@ -36,12 +41,35 @@ export default function Detail() {
 
                 console.log(studentData.data)
 
-                const codeAverage = (studentData.data.total_scores.code / studentData.data.evalutions.length);
-                const planAverage = (studentData.data.total_scores.plan / studentData.data.evalutions.length);
-                const designAverage = (studentData.data.total_scores.design / studentData.data.evalutions.length);
-                const presentationAverage = (studentData.data.total_scores.presentation / studentData.data.evalutions.length);
-                const communicationAverage = (studentData.data.total_scores.communication / studentData.data.evalutions.length);
+                if(studentData.data.evalutions.length !==0){
+                    codeAverage2 = studentData.data.evalutions.reduce((acc, cur)=>{
+                        return acc + cur.code;
+                    },0)
+                    planAverage2 = studentData.data.evalutions.reduce((acc, cur)=>{
+                        return acc + cur.plan;
+                    },0)
+                    designAverage2 = studentData.data.evalutions.reduce((acc, cur)=>{
+                        return acc + cur.design;
+                    },0)
+                    presentationAverage2 = studentData.data.evalutions.reduce((acc, cur)=>{
+                        return acc + cur.presentation;
+                    },0)
+                    communicationAverage2 = studentData.data.evalutions.reduce((acc, cur)=>{
+                        return acc + cur.communication;
+                    },0)
+                    // console.log(codeAverage2, planAverage2, designAverage2, presentationAverage2, communicationAverage2)
+                }
+
+                const codeAverage = (codeAverage2 / studentData.data.evalutions.length);
+                const planAverage = (planAverage2 / studentData.data.evalutions.length);
+                const designAverage = (designAverage2 / studentData.data.evalutions.length);
+                const presentationAverage = (presentationAverage2 / studentData.data.evalutions.length);
+                const communicationAverage = (communicationAverage2 / studentData.data.evalutions.length);
                 
+
+
+
+
                 const average = [
                     Math.round(codeAverage) ,
                     Math.round(planAverage) ,
@@ -58,6 +86,7 @@ export default function Detail() {
 
         fetchData()
     },[])
+
 
 // date format
 const dateFomat = (value) =>{
