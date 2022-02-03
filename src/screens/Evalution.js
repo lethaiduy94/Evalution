@@ -210,7 +210,8 @@ export default function Evalution() {
         return (
             <div className={styles.container}>
                 <div className ={student.student_number.includes('20aw') ?  styles.header :  styles.header2}>
-                    <p className={styles.title}>「{student.name}」さんの作品評価をお願いします</p>
+                    {/* <p className={styles.title}>「{student.name}」さんの作品評価をお願いします</p> */}
+                    <p className={styles.title}>作品評価をお願いします</p>
                     <div className = {styles.imgBox} style={{
                         boxShadow: student.student_number.includes('20aw') ? `3px 3px 4px var(--bottom-shadow-1), -3px -3px 2px var(--top-shadow-1)` :
                         `3px 3px 4px var(--bottom-shadow-2), -3px -3px 2px var(--top-shadow-2)`
@@ -218,6 +219,7 @@ export default function Evalution() {
                         <img className = {styles.img} src = {student.avatar != null ? `${student.avatar.url}`:avatarDummy}></img>
                     </div>
                     <p className={styles.number}>ブース番号: <span>{student.booth_number}</span></p>
+                    <p className={styles.studentName}>{student.name}</p>
                     <div className={styles.product}>
                         <p style={{fontSize: '18px'}}>{student.title}</p>
                         <div className={styles.productImg} style={{

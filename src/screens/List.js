@@ -19,17 +19,17 @@ export default function List() {
     //useRef loop
     const btn = useRef([])
     btn.current = tabs.map((element, i) => btn.current[i] ?? createRef());
-    console.dir(btn.current[0].current)
+    // console.dir(btn.current[0].current)
     //function
     const handleClick =(tab) =>{
         if(tab == '21aw'){
-            btn.current[0].current.style.backgroundColor = '#E8644F';
-            btn.current[0].current.style.color = '#ffff';
+            btn.current[0].current.style.backgroundColor = '#fcf2f0';
+            btn.current[0].current.style.color = '#e8644f';
             btn.current[1].current.style.backgroundColor = '#ffff';
             btn.current[1].current.style.color = '#6A5026';
         }else{
-            btn.current[1].current.style.backgroundColor = '#1163A1';
-            btn.current[1].current.style.color = '#ffff';
+            btn.current[1].current.style.backgroundColor = '#edf1f4';
+            btn.current[1].current.style.color = '#1163a1';
             btn.current[0].current.style.backgroundColor = '#ffff';
             btn.current[0].current.style.color = '#6A5026';
         }
