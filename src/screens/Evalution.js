@@ -106,7 +106,7 @@ export default function Evalution() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        const data1 = {
+        const data = {
             code:parseInt(code),
             plan:parseInt(plan),
             design:parseInt(design),
@@ -136,7 +136,7 @@ export default function Evalution() {
          const addScore = await axios({
              method:'POST',
              url:`${heroku}/evalutions`,
-             data: data1
+             data
          })
 
          const updateScore = await axios({
