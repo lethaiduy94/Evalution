@@ -131,7 +131,6 @@ export default function Evalution() {
 
         }
 
-        console.log(data1)
 
          const addScore = await axios({
              method:'POST',
